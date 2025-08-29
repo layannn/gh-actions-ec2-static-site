@@ -27,7 +27,7 @@ jobs:
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_SSH_KEY }}
         source: "site/*"
-        target: "/home/ubuntu/site/"
+        target: "site/"
 
     - name: Restart Nginx
       uses: appleboy/ssh-action@v0.1.6
