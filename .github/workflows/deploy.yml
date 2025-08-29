@@ -1,0 +1,33 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches: [dev, stg, main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Copy files to EC2
+      uses: appleboy/scp-action@v0.1.3
+      with:
+        host: 13.48.133.233
+        username: ubuntu
+        key: ${{ secrets.EC2_SSH_KEY }}
+        source: "site/*"
+        target: "~/site/"
+
+    - name: SSH and restart server
+      uses: appleboy/ssh-action@v0.1.5
+      with:
+        host: 13.48.133.233
+        username: ubuntu
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          cd ~/site
+          sudo systemctl restart nginx
+
