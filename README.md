@@ -46,12 +46,10 @@ The following secrets must be configured in the GitHub repository:
 ---
 
 ## EC2 Setup
-1. Install Nginx:  
+Install, test and reload Nginx:  
    ```bash
-  sudo apt update
-  sudo apt install nginx -y
-2. Update Nginx config (/etc/nginx/sites-enabled/default):
-  root /home/ubuntu/site;
-  index index.html;
-3. Reload Nginx:
-  sudo systemctl restart nginx
+     sudo apt update
+     sudo apt install nginx -y
+     sudo nginx -t
+     sudo systemctl restart nginx
+   
