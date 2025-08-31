@@ -9,11 +9,12 @@ The site is live at:
 ---
 
 ## Repository Structure
-.
-├── site/ # Static site files (index.html, etc.)
+gh-actions-ec2-static-site/
+├── site/                  # Static site files (index.html, etc.)
+│   └── index.html
 ├── .github/
-│ └── workflows/
-│ └── deploy.yml # GitHub Actions workflow for deployment
+│   └── workflows/
+│       └── deploy.yml     # GitHub Actions workflow for deployment
 └── README.md
 
 ---
